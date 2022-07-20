@@ -64,9 +64,16 @@ class RestaurantTest {
         assertEquals(initialMenuSize-1,restaurant.getMenu().size());
     }
     @Test
-    public void removing_item_that_does_not_exist_should_throw_exception() {
-        assertThrows(itemNotFoundException.class,
-                ()->restaurant.removeFromMenu("French fries"));
+    public void calling_order_total_should_return_correct_value_if_items_are_present() throws itemNotFoundException {
+        String[] items = {"Sweet corn soup", "Vegetable lasagne"};
+        int orderTotal = restaurant.getOrderValue(items);
+        assertEquals(388, orderTotal);
     }
-    //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void calling_order_total_should_throw_error_if_any_item_is_not_found() throws itemNotFoundException {
+        String[] items = {"Sweet corn soup", "carrot"};
+        assertThrows(itemNotFoundException.class,
+                () -> restaurant.getOrderValue(items));
+    }
 }

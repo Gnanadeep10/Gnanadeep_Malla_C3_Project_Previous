@@ -60,6 +60,10 @@ public class Restaurant {
 
     }
 
+    public int getOrderValue(String[] items) throws itemNotFoundException {
+        return 0;
+    }
+
     public String getName() {
         return name;
     }
