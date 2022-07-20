@@ -61,7 +61,13 @@ public class Restaurant {
     }
 
     public int getOrderValue(String[] items) throws itemNotFoundException {
-        return 0;
+        int sum = 0;
+        for(int i = 0; i < items.length; i++) {
+            Item item = findItemByName(items[i]);
+            sum = sum + item.getPrice();
+        }
+
+        return sum;
     }
 
     public String getName() {
